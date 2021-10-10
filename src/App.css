@@ -1,53 +1,6 @@
-.counter {
-  background-color: darkseagreen;
-  width: 120px;
-  height: 100px;
-  margin: 5% auto;
-  border-radius: 5px;
-}
-
-.tablo {
-  background-color: burlywood;
-  height: 50px;
-  margin: 10px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.buttons {
-  background-color: burlywood;
-  height: 30px;
-  margin: 10px;
-  border-radius: 5px;
-}
-
-.disabled {
-  color: crimson;
-  background-color: burlywood;
-  height: 50px;
-  margin: 10px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.button {
-  border-radius: 5px;
-  border-width: 1px;
-}
-
-.setCounter {
-  background-color: darkseagreen;
-  width: 160px;
-  height: 100px;
-  margin: 5% auto;
-  border-radius: 5px;
-}
-
-.setTablo {
-  background-color: burlywood;
-  height: 50px;
-  margin: 1em;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 10px;
+.app-wrapper {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
 }
