@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from './Counter';
 import {SetCounter} from './SetCounter';
@@ -25,11 +25,11 @@ function App() {
         }
     )
 
-    function incValue() {
+    const incValue = () => {
         setState({...state, value: state.value + 1})
     }
 
-    function resetCounter() {
+    const resetCounter = () => {
         setState({...state, value: state.startValue})
     }
 
@@ -41,7 +41,7 @@ function App() {
         setState({...state, startValueFromInput: startValueFromInput})
     }
 
-    function setCounter() {
+    const setCounter = () => {
         setState(
             {
                 ...state,
@@ -51,6 +51,32 @@ function App() {
             }
         )
     }
+
+    useEffect(() => {
+        let startValueFromInput = localStorage.getItem('startValueFromInput')
+        let maxValueFromInput = localStorage.getItem('maxValueFromInput')
+
+        if (startValueFromInput && maxValueFromInput) {
+            let newStartValueFromInput = (JSON.parse(startValueFromInput))
+            let newMaxValueFromInput = (JSON.parse(maxValueFromInput))
+            setState({
+                ...state,
+                startValueFromInput: newStartValueFromInput,
+                maxValueFromInput: newMaxValueFromInput
+            })
+        }
+
+    }, [])
+
+
+    useEffect(() => {
+        localStorage.setItem('startValueFromInput', JSON.stringify(state.startValueFromInput))
+    }, [state.startValueFromInput])
+
+
+    useEffect(() => {
+        localStorage.setItem('maxValueFromInput', JSON.stringify(state.maxValueFromInput))
+    }, [state.maxValueFromInput])
 
 
     return <div className="app-wrapper">
