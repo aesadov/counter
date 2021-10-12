@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from './Counter';
 import {SetCounter} from './SetCounter';
-import {Box} from '@mui/material';
-import {Paper} from '@material-ui/core';
+import {Grid, Paper} from '@material-ui/core';
 
 export type StateType = {
     startValueFromInput: number,
@@ -68,44 +67,42 @@ function App() {
 
     }, [])
 
-
     useEffect(() => {
         localStorage.setItem('startValueFromInput', JSON.stringify(state.startValueFromInput))
     }, [state.startValueFromInput])
-
 
     useEffect(() => {
         localStorage.setItem('maxValueFromInput', JSON.stringify(state.maxValueFromInput))
     }, [state.maxValueFromInput])
 
+    return <div >
 
-    return <div className="app-wrapper">
-        <Box
-            sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                '& > :not(style)': {
-                    m: 1,
-                },
-            }}
-        >
-            <Paper style={{padding: '10px'}}>
-                <SetCounter
-                    state={state}
-                    onChangeMaxValue={onChangeMaxValue}
-                    onChangeStartValue={onChangeStartValue}
-                    setCounter={setCounter}
-                />
-            </Paper>
-            <Paper style={{padding: '10px'}}>
-                <Counter
-                    state={state}
-                    incValue={incValue}
-                    resetCounter={resetCounter}
-                />
-            </Paper>
-        </Box>
+            <Grid container
+                  style={{padding: '20px'}}
+                  spacing={2}
+                  justifyContent={'center'}
+            >
+                <Grid item>
+                    <Paper style={{padding: '10px'}}>
+                        <SetCounter
+                            state={state}
+                            onChangeMaxValue={onChangeMaxValue}
+                            onChangeStartValue={onChangeStartValue}
+                            setCounter={setCounter}
+                        />
+                    </Paper>
+                </Grid>
 
+                <Grid item>
+                    <Paper style={{padding: '10px'}}>
+                        <Counter
+                            state={state}
+                            incValue={incValue}
+                            resetCounter={resetCounter}
+                        />
+                    </Paper>
+                </Grid>
+            </Grid>
     </div>
 
 }
