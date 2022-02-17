@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
-import {StateType} from './App';
 import {Button, TextField} from '@material-ui/core';
+import {StateType} from './state/counter-reduser';
 
 
 type SetCounterPropsType = {
@@ -11,7 +11,6 @@ type SetCounterPropsType = {
 }
 
 export function SetCounter(props: SetCounterPropsType) {
-
     const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         const maxValue = Number(e.target.value) //перевод строки в число
         props.onChangeMaxValue(maxValue)

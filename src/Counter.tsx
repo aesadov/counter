@@ -1,7 +1,7 @@
 import React from 'react';
-import {StateType} from './App';
 import {Button, TextField} from '@material-ui/core';
 import Stack from '@mui/material/Stack'
+import {StateType} from './state/counter-reduser';
 
 type CounterPropsType = {
     state: StateType
@@ -56,11 +56,7 @@ export function Counter(props: CounterPropsType) {
             state.maxValue !== state.maxValueFromInput
         ) return false
 
-        else if (
-            state.value === state.maxValue
-        ) return true
-
-        else return false
+        else return state.value === state.maxValue;
     }
 
     const disabledIncButton = (
@@ -85,7 +81,9 @@ export function Counter(props: CounterPropsType) {
                     color="primary"
                     size="small"
                     disabled={disabledIncButton}
-                    onClick={() => props.incValue()}>inc
+                    onClick={() => props.incValue()}
+            >
+                inc
             </Button>
 
             <Button variant="contained"
